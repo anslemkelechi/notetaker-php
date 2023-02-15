@@ -9,7 +9,7 @@ include_once '../class/note.php';
 $database = new Database();
 $db = $database->getConnection();
 $item = new Note($db);
-$item->id = $_COOKIE['user_id'];
+$item->user_id = $_COOKIE['user_id'] ?? null;
 
 if ($item->getSingleNote()) {
     // create array

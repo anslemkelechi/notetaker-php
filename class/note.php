@@ -67,15 +67,14 @@ class Note
         if (is_array($dataRow)) {
             if ($_COOKIE['user_id'] == $dataRow['user_id']) {
                 /* The password is correct. */
+                $this->id = $dataRow['id'];
+                $this->title = $dataRow['title'];
+                $this->body = $dataRow['body'];
+                $this->created = $dataRow['created'];
                 return true;
             }
         } else {
             return false;
         }
-
-        $this->title = $dataRow['title'];
-        $this->body = $dataRow['body'];
-        $this->user_id = $dataRow['user_id'];
-        $this->created = $dataRow['created'];
     }
 }

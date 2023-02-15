@@ -17,12 +17,16 @@ $item->body = $data->body;
 $item->user_id = $_COOKIE['user_id'];
 $item->created = date('Y-m-d H:i:s');
 
-if ($item->createNote()) {
-    try {
-        echo 'Note created successfully.';
-    } catch (PDOException $e) {
-        echo 'Error Creating Note';
-    }
+if (!$_COOKIE['user_id']) {
+    echo 'Please Login to create note';
 } else {
-    echo 'Account could not be created.';
+    if ($item->createNote()) {
+        try {
+            echo 'Note created successfully.';
+        } catch (PDOException $e) {
+            echo 'Error Creating Note';
+        }
+    } else {
+        echo 'Account could not be created.';
+    }
 }
